@@ -4,6 +4,7 @@
 	Version="7.10"
 	Name="labopen"
 	ProjectGUID="{A21EFBE6-A575-462B-BC4A-1E71327C897D}"
+	RootNamespace="labopen"
 	Keyword="Win32Proj">
 	<Platforms>
 		<Platform
@@ -15,28 +16,37 @@
 			OutputDirectory="Debug"
 			IntermediateDirectory="Debug"
 			ConfigurationType="1"
-			CharacterSet="1">
+			CharacterSet="1"
+			DeleteExtensionsOnClean="*.obj;*.ilk;*.pdb;*.tlb;*.tli;*.tlh;*.tmp;*.rsp;*.bat;$(TargetPath);*.exp;*.lib"
+			WholeProgramOptimization="TRUE">
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE"
+				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS"
 				MinimalRebuild="TRUE"
 				BasicRuntimeChecks="3"
-				RuntimeLibrary="5"
+				RuntimeLibrary="3"
+				EnableFunctionLevelLinking="TRUE"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="TRUE"
-				DebugInformationFormat="4"/>
+				DebugInformationFormat="3"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
+				AdditionalDependencies="&quot;$(TargetDir)myshell32.lib&quot;"
 				OutputFile="$(OutDir)/labopen.exe"
-				LinkIncremental="2"
-				DelayLoadDLLs="user32.dll"
+				LinkIncremental="1"
+				IgnoreDefaultLibraryNames="shell32.lib"
+				ModuleDefinitionFile=""
+				DelayLoadDLLs=""
 				GenerateDebugInformation="TRUE"
 				ProgramDatabaseFile="$(OutDir)/labopen.pdb"
-				SubSystem="1"
+				SubSystem="2"
+				OptimizeReferences="2"
+				EnableCOMDATFolding="2"
+				EntryPointSymbol="WinMainNoCRT"
 				TargetMachine="1"/>
 			<Tool
 				Name="VCMIDLTool"/>
@@ -65,12 +75,20 @@
 			IntermediateDirectory="Release"
 			ConfigurationType="1"
 			CharacterSet="1"
+			DeleteExtensionsOnClean="*.obj;*.ilk;*.pdb;*.tlb;*.tli;*.tlh;*.tmp;*.rsp;*.bat;$(TargetPath);*.exp;*.lib"
 			WholeProgramOptimization="TRUE">
 			<Tool
 				Name="VCCLCompilerTool"
-				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE"
+				Optimization="1"
+				GlobalOptimizations="TRUE"
+				InlineFunctionExpansion="2"
+				EnableIntrinsicFunctions="TRUE"
+				FavorSizeOrSpeed="2"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS"
 				StringPooling="TRUE"
-				RuntimeLibrary="4"
+				RuntimeLibrary="2"
+				BufferSecurityCheck="FALSE"
+				EnableFunctionLevelLinking="TRUE"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="TRUE"
@@ -79,12 +97,16 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
+				AdditionalDependencies="&quot;$(TargetDir)myshell32.lib&quot;"
 				OutputFile="$(OutDir)/labopen.exe"
 				LinkIncremental="1"
+				IgnoreDefaultLibraryNames="shell32.lib"
+				ModuleDefinitionFile=""
 				GenerateDebugInformation="TRUE"
-				SubSystem="1"
+				SubSystem="2"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
+				EntryPointSymbol="WinMainNoCRT"
 				TargetMachine="1"/>
 			<Tool
 				Name="VCMIDLTool"/>
@@ -117,6 +139,14 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}">
 			<File
 				RelativePath=".\labopen.cpp">
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+						Name="VCCLCompilerTool"
+						InlineFunctionExpansion="2"
+						EnableIntrinsicFunctions="FALSE"
+						OmitFramePointers="TRUE"/>
+				</FileConfiguration>
 			</File>
 		</Filter>
 		<Filter
@@ -129,6 +159,26 @@
 			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx"
 			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}">
 		</Filter>
+		<File
+			RelativePath=".\shell32dec.def">
+			<FileConfiguration
+				Name="Debug|Win32">
+				<Tool
+					Name="VCCustomBuildTool"
+					CommandLine="lib &quot;/out:$(TargetDir)shell32undec.lib&quot; /def:shell32undec.def /machine:X86 &amp;&amp;   lib &quot;/out:$(TargetDir)myshell32.lib&quot; /def:shell32dec.def /machine:X86 &quot;$(TargetDir)shell32undec.lib&quot;
+"
+					Outputs=" &quot;$(TargetDir)myshell32.lib&quot;"/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="Release|Win32">
+				<Tool
+					Name="VCCustomBuildTool"
+					CommandLine="lib &quot;/out:$(TargetDir)shell32undec.lib&quot; /def:shell32undec.def /machine:X86 &amp;&amp;   lib &quot;/out:$(TargetDir)myshell32.lib&quot; /def:shell32dec.def /machine:X86 &quot;$(TargetDir)shell32undec.lib&quot;
+"
+					AdditionalDependencies=""
+					Outputs=" &quot;$(TargetDir)myshell32.lib&quot;"/>
+			</FileConfiguration>
+		</File>
 	</Files>
 	<Globals>
 	</Globals>

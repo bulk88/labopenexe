@@ -1,0 +1,6 @@
+LIBRARY SHELL32.DLL
+EXPORTS
+    StrStrA
+    CommandLineToArgvW
+    ShellExecuteW
+    ShellExecuteA

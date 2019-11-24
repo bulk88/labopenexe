@@ -1,1 +1,6 @@
-labopen.ncb
+Release
+Debug
+*.ncb
+*.suo
+*.exp
+*.lib

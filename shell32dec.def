@@ -1,0 +1,6 @@
+LIBRARY SHELL32.DLL
+EXPORTS
+    StrStrA@8 = StrStrA
+    CommandLineToArgvW@8 = CommandLineToArgvW
+    ShellExecuteW@24 = ShellExecuteW
+    ShellExecuteA@24 = ShellExecuteA
